@@ -7,13 +7,13 @@ MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 #Installation of nesesary package/software for this containers...
 RUN echo "deb http://archive.ubuntu.com/ubuntu utopic-backports main restricted universe" >> /etc/apt/sources.list
 RUN add-apt-repository ppa:iconnor/zoneminder
-RUN apt-get update && apt-get install -y -q software-properties-common \
-                                        python-software-properties \
-                                        mysql-server  \
-                                        libvlc-dev  \
-                                        libvlccore-dev\
-                                        libapache2-mod-perl2 \
-                                        vlc \
+RUN export DEBIAN_FRONTEND='noninteractive' && apt-get update && apt-get install -y -q software-properties-common \
+                                                                                       python-software-properties \
+                                                                                       mysql-server  \
+                                                                                       libvlc-dev  \
+                                                                                       libvlccore-dev\
+                                                                                       libapache2-mod-perl2 \
+                                                                                       vlc \
                     && apt-get clean \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
